@@ -1,0 +1,23 @@
+Change By = if(HASONEVALUE('Productivity Improvement'[Percentage Change]),Values('Productivity Improvement'[Percentage Change]),0)
+
+Total Minutes = sumx(Survey,60*8)
+
+Time Lost = sum(Survey[Time Lost])+sum(Survey[Normal Time Lost])
+
+Time Productive = [Total Minutes]-'Productivity Improvement'[Time Lost:]
+
+% Time Productive = divide([Time Productive],[Total Minutes])
+
+Reduce time lost = [Time Lost:]*(1-[Change By])
+
+All Minutes = Calculate([Total Minutes],ALL(Survey[What is the biggest challenge you face to being productive?]))
+
+All Lost = calculate([Time Lost:],All(Survey[What is the biggest challenge you face to being productive?]))
+
+Loss Selected Categories = CALCULATE([All Lost]-([Time Lost:]-[Reduce time lost]),ALLSELECTED(Survey[What is the biggest challenge you face to being productive?]))
+
+Selected % = divide([Total Minutes]-[Reduce time lost],[Total Minutes])
+
+Total % Productive = DIVIDE([All Minutes]-[Loss Selected Categories],[All Minutes])
+
+Improvement Total Productivity = [Total % Productive]-divide([All Minutes]-[All Lost],[All Minutes])

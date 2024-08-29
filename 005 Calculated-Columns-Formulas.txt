@@ -1,0 +1,46 @@
+Survey Responses = 1
+
+---
+
+How important is productivity to happiness?
+
+Believe Productivity is important to happiness indicator = if(Survey[How important would you say feeling productive is to your happiness?]="Very important to my overall happiness"||Survey[How important would you say feeling productive is to your happiness?]="Moderately important to my overall happiness","Believe productivity is important","Do not believe productivity is important")
+
+Believe productivity is important to overall happiness
+
+---
+What is the #1 challenge to being productive?
+
+What is the biggest challenge you face to being productive - Distractions = if(Survey[What is the biggest challenge you face to being productive?]="Distractions (e.g. Social Media)","Y","N")
+
+Have too many distractions (e.g. Social Media)
+
+What is the biggest challenge you face to being productive - Interruption = if(Survey[What is the biggest challenge you face to being productive?]="Constantly being interrupted by colleagues","Y","N")
+
+Are constantly being interrupted by colleagues
+
+What is the biggest challenge you face to being productive - Wrong Tech = if(Survey[What is the biggest challenge you face to being productive?]="Not having the right technology","Y","N")
+
+Feel they do not have the right tools
+
+What is the biggest challenge you face to being productive - Time Management = if(Survey[What is the biggest challenge you face to being productive?]="Time Management","Y","N")
+
+Struggle to manage their time
+
+What is the biggest challenge you face to being productive - Other = if(Survey[What is the biggest challenge you face to being productive?]="Other (please specify)","Y","N")
+
+Feel unproductive due to other influences
+
+---
+What would help you to increase productivity?
+
+Which of the following are most helpful when it comes to productivity = if('Which of the follow'[helpful]="Blocking off task times on your calendar","creating calendar tasks",'Which of the follow'[helpful]
+)
+
+---
+What time of the day are you most productive?
+
+
+Normal Time Lost = 10*8
+
+Sort = related(Sort[Sort])
